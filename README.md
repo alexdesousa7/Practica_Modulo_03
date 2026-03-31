@@ -53,7 +53,7 @@ FastAPI en: http://localhost:8080
 
 PostgreSQL en el puerto 5432
 
-📘 Documentación automática
+Documentación automática
 FastAPI genera documentación interactiva:
 
 http://localhost:8080/docs
