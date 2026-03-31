@@ -19,7 +19,6 @@ def get_student_by_id(db: Session, student_id: int):
 
 def create_student(db: Session, student_in: schemas.StudentCreate):
     logger.info(f"Creando el email={student_in.email} para el estudiante")
-    # Verificar si el email del estudiante ya existe
     existing = db.query(models.Student).filter(models.Student.email == student_in.email).first()
     if existing:
         logger.error(f"El email {student_in.email} ya existe")
@@ -41,4 +40,3 @@ def delete_student(db: Session, student_id: int):
     db.commit()
     logger.info(f"Estudiante id={student_id} ha sido eliminado con exito!!!")
     return
-
