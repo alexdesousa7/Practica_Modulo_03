@@ -1,6 +1,6 @@
 version: "3.9"
 
-Services:
+services:
   app:
     build:
       context: .
@@ -25,16 +25,16 @@ Services:
     environment:
       - POSTGRES_USER=appuser
       - POSTGRES_PASSWORD=apppasword
-      - POSTGRESS_DB=studentsdb
+      - POSTGRES_DB=studentsdb
     volumes:
       - students_data_volume:/var/lib/postgresql/data
     networks:
       - app-network
 
-network:
+networks:
   app-network:
     driver: bridge
 
 volumes:
-  studnets_data_volume:
+  students_data_volume:
     name: students_data_volume
