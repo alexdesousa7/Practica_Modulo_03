@@ -1,0 +1,40 @@
+version: "3.9"
+
+Services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: fastapi_app
+    ports:
+      - "8080:8080"
+    environment:
+      - POSTGRES_USER=appuser
+      - POSTGRES_PASSWORD=apppasword
+      - POSTGRES_DB=studentsdb
+      - DB_HOST=db
+      - DB_PORT=5432
+    depends_on:
+      - db
+    networks:
+      - app-network
+
+  db:
+    image: postgres:16
+    container_name: postgres-db
+    environment:
+      - POSTGRES_USER=appuser
+      - POSTGRES_PASSWORD=apppasword
+      - POSTGRESS_DB=studentsdb
+    volumes:
+      - students_data_volume:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+network:
+  app-network:
+    driver: bridge
+
+volumes:
+  studnets_data_volume:
+    name: students_data_volume
