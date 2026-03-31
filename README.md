@@ -47,6 +47,8 @@ La API cumple los 4 requisitos obligatorios del ejercicio:
 
 ```bash
 docker compose up --build
+```
+
 Esto levantará:
 
 FastAPI en: http://localhost:8080
